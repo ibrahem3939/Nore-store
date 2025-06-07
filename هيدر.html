@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nore store Handmade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* إعدادات عامة */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      background-color: #fff;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* الوضع الليلي */
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    body.dark-mode .main-header {
+      background-color: #1e1e1e;
+    }
+
+    body.dark-mode .card {
+      background-color: #2a2a2a;
+      color: #fff;
+    }
+
+    body.dark-mode nav ul li a {
+      color: #fff;
+    }
+
+    body.dark-mode .whatsapp-message {
+      background-color: #128c7e;
+    }
+
+    /* زرار الوضع الليلي */
+    #darkModeToggle {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      padding: 8px 12px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #444;
+      color: #fff;
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    #darkModeToggle:hover {
+      background-color: #222;
+    }
+
+    /* الهيدر */
+    .main-header {
+      background-color: #87CEEB;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 50px;
+      height: auto;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      color: #333;
+      margin: 0;
+    }
+
+    /* روابط التنقل */
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      padding: 15px 30px;
+      border-radius: 20px;
+      background: linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        blue,
+        indigo,
+        violet
+      );
+      background-size: 400% 400%;
+      animation: rainbow 6s ease infinite;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* قسم من نحن */
+    .about {
+      padding: 30px 15px;
+      text-align: center;
+      background-color: #fcfcfc;
+      max-width: 900px;
+      margin: auto;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .about h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    /* قسم مميزاتنا */
+    .features {
+      text-align: center;
+      padding: 30px 15px;
+      max-width: 900px;
+      margin: 30px auto;
+    }
+
+    .features h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .feature-cards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .card {
+      background-color: #f3f3f3;
+      padding: 15px 20px;
+      border-radius: 15px;
+      font-size: 16px;
+      width: 90%;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: default;
+    }
+
+    .card:hover {
+      background-color: #d1e7dd;
+      transform: scale(1.03);
+    }
+
+    /* أيقونة واتساب ثابتة */
+    .whatsapp-wrapper {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .whatsapp-icon img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-icon img:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-message {
+      background-color: #25d366;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      white-space: nowrap;
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* الفوتر */
+    .site-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background-color: #000000;
+      font-size: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul li a {
+        font-size: 30px;
+        padding: 12px 20px;
+      }
+
+      .card {
+        width: 100%;
+      }
+
+      .site-footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- زرار الوضع الليلي -->
+  <button id="darkModeToggle" aria-label="Toggle Dark Mode">🌙</button>
+
+  <!-- الهيدر -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="Looli Logo" />
+        <h1>Nore store</h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- من نحن -->
+  <section class="about">
+    <h2>مرحباً بكم في متجر Nore للمنتجات اليدوية</h2>
+    <p>نحن نقدم لكم مجموعة مميزة من الشنط الخرزية المصنوعة يدوياً بكل حب واهتمام بالتفاصيل.</p>
+    <p>تصفح مجموعتنا الواسعة من التصاميم الفريدة التي تناسب جميع الأذواق والمناسبات.</p>
+  </section>
+
+  <!-- روابط -->
+  <nav>
+    <ul>
+      <li><a href="products.html">منتجاتنا</a></li>
+    </ul>
+  </nav>
+
+  <!-- مميزاتنا -->
+  <section class="features">
+    <h2>مميزاتنا</h2>
+    <div class="feature-cards">
+      <div class="card">🧵 شغل يدوي أصلي</div>
+      <div class="card">💎 خامات ممتازة</div>
+      <div class="card">🚚 توصيل سريع وآمن</div>
+      <div class="card">💰 أسعار في المتناول</div>
+    </div>
+  </section>
+
+  <!-- خطوات الطلب -->
+  <div class="order-title">طريقة الطلب</div>
+  <section class="order-steps">
+    <div class="step"><p>اذهب إلى منتجاتنا🛍️ </p></div>
+    <div class="step"><p>اختر الشنطة المناسبة لك👜</p></div>
+    <div class="step"><p>احفظ كود الشراء🔖</p></div>
+    <div class="step"><p>عد للصفحة الرئيسية🏠</p></div>
+    <div class="step"><p>اضغط علي ايقونه واتساب للشراء📲</p></div>
+  </section>
+
+  <!-- واتساب -->
+  <div class="whatsapp-wrapper" onmouseover="showWhatsAppMessage()">
+    <a href="https://wa.me/201212218703" target="_blank" class="whatsapp-icon" title="تواصل معنا على واتساب">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"/>
+    </a>
+    <div class="whatsapp-message" id="whatsapp-msg">تواصل معنا الآن</div>
+  </div>
+
+  <!-- فوتر -->
+  <footer class="site-footer">
+    <div class="footer-left">Designed by .IBRAHEM</div>
+    <div class="footer-center">ibrahemelmeehy1@gmail.com</div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    let msgTimeout;
+    function showWhatsAppMessage() {
+      const msg = document.getElementById("whatsapp-msg");
+      msg.style.display = "block";
+      clearTimeout(msgTimeout);
+      msgTimeout = setTimeout(() => {
+        msg.style.display = "none";
+      }, 8000);
+    }
+
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    // استرجاع الوضع من التخزين المحلي
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark-mode');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+  </script>
+</body>
+</html>

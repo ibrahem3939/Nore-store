@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>منتجاتنا</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      background-color: #f8f8f8;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 36px;
+      color: #333;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .product-price {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #2c3e50;
+    }
+
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>منتجاتنا</h1>
+
+  <div class="products-grid">
+    <!-- منتج 1 -->
+    <div class="product-card">
+      <img src="images/product1.jpg" alt="شنطة 1" class="product-image" onclick="openLightbox(this.src)">
+      <div class="product-info">
+        <div class="product-title">شنطة لولي وردية وبنفسجيه</div>
+        <div class="product-description">شنطة خرز يدوي فاخرة.</div>
+        <div class="product-price">السعر: 350 جنيه</div>
+     <div class="product-price">كود الشراء 01</div>
+    </div>
+<!-- منتج 2 -->
+    <div class="product-card">
+      <img src="images/product2.jpg" alt="شنطة 2" class="product-image" onclick="openLightbox(this.src)">
+      <div class="product-info">
+        <div class="product-title">شنطة كلاسيك</div>
+        <div class="product-description">تصميم كلاسيكي يناسب جميع الأعمار.</div>
+        <div class="product-price">السعر: 300 جنيه</div>
+         <div class="product-price">كود الشراء 02</div>
+      </div>
+    </div>
+  </div>
+
+<!-- منتج 3 -->
+    <div class="product-card">
+      <img src="images/product3.jpg" alt="شنطة 2" class="product-image" onclick="openLightbox(this.src)">
+      <div class="product-info">
+        <div class="product-title">شنطة كلاسيك</div>
+        <div class="product-description">تصميم عصري يناسب الجميع</div>
+        <div class="product-price">السعر: 400 جنيه</div>
+         <div class="product-price">كود الشراء 03</div>
+      </div>
+    </div>
+  </div>
+
+<!-- منتج 4 -->
+    <div class="product-card">
+      <img src="images/product4.jpeg" alt="شنطة 2" class="product-image" onclick="openLightbox(this.src)">
+      <div class="product-info">
+        <div class="product-title">شنطة كروس صغيره</div>
+        <div class="product-description">تصميم عصري يناسب اعمار صغيره</div>
+        <div class="product-price">السعر 250 جنيه</div>
+         <div class="product-price">كود الشراء 04</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- منتج 5 -->
+    <div class="product-card">
+      <img src="images/product5.jpeg" alt="شنطة 2" class="product-image" onclick="openLightbox(this.src)">
+      <div class="product-info">
+        <div class="product-title">حافظه هاتف</div>
+        <div class="product-description">تصميم عصري يناسب جميع الهواتف</div>
+        <div class="product-price">السعر 300 جنيه</div>
+         <div class="product-price">كود الشراء 05</div>
+      </div>
+    </div>
+  </div>
+
+<!-- منتج 6 -->
+    <div class="product-card">
+      <img src="images/product6.jpeg" alt="شنطة 2" class="product-image" onclick="openLightbox(this.src)">
+      <div class="product-info">
+        <div class="product-title">شنطة يد لولي سودا</div>
+        <div class="product-description">تصميم عصري يناسب جميع</div>
+        <div class="product-price">السعر 450 جنيه</div>
+         ><div class="product-price">كود الشراء 06</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- منتج 7 -->
+    <div class="product-card">
+      <img src="images/product7.jpeg" alt="شنطة 2" class="product-image" onclick="openLightbox(this.src)">
+      <div class="product-info">
+        <div class="product-title">شنطة يد و كروس  من الولي الابيض</div>
+        <div class="product-description">تصميم يناسب جميع</div>
+        <div class="product-price">السعر 450 جنيه</div>
+         <div class="product-price">كود الشراء 07</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- منتج 8 -->
+    <div class="product-card">
+      <img src="images/product8.jpeg" alt="شنطة 2" class="product-image" onclick="openLightbox(this.src)">
+      <div class="product-info">
+        <div class="product-title">حروف ميدالية من اللولي </div>
+        <div class="product-description">جميع الحروف والرقام</div>
+        <div class="product-price">السعر 80 جنيه</div>
+         <div class="product-price">كود الشراء 08</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox container -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close-btn" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="عرض الصورة">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").classList.add("active");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+  </script>
+
+</body>
+</html>
